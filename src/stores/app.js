@@ -5,17 +5,32 @@ import DataUser from "@/database/db.json"
 export const useAppStore = defineStore('app', {
   state: () => ({
     Url:"http://localhost:3000",
-    DataUser,
-    CheckLogin:""
+    check:null,
+    checkEmail:null
   }),
   getters:{
 
   },
   actions:{
     async Login(Email, Password) {
-      const res = await fetch(`${this.Url}/User`);
-      const CheckLogin = await res.json();
+      try {
+        const res = await fetch(`${this.Url}/user?email=${Email}`);
+        const CheckLogin = await res.json();
+        const login = CheckLogin[0]
+
+        if (Password == login.password){
+          this.check = true
+        }else{
+          this.check = false
+        }
+      } catch (error) {
+        this.check = false
+      }
     },
+
+    ClosedSuccess (){
+      this.check=null
+    }
 
   }
 })
