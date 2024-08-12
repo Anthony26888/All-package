@@ -19,7 +19,6 @@ import Dialog from "../components/Login-Reg/DialogSuccess.vue"
 </script>
 <style scoped>
 .picture{
-  width:486px;
   height: 816;
 }
 </style>

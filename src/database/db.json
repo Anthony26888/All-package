@@ -1,14 +1,64 @@
 {
-    "user": [
-        {
-            "id": 0,
-            "email": "haidang34821@gmail.com",
-            "password": "haidang007"
-        },
-        {
-            "id": 1,
-            "email": "haidang11111995@gmail.com",
-            "password": "Haidang007@"
-        }
-    ]
+  "user": [
+    {
+      "id": "0",
+      "email": "haidang34821@gmail.com",
+      "password": "haidang007"
+    },
+    {
+      "id": "1",
+      "email": "haidang11111995@gmail.com",
+      "password": "Haidang007@"
+    },
+    {
+      "id": "48bc",
+      "FirstName": "dang",
+      "LastName": "nguyen",
+      "Email": "haidang34821@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang007",
+      "RePassword": "haidang007"
+    },
+    {
+      "id": "aefc",
+      "FirstName": "ha",
+      "LastName": "phan",
+      "Email": "haidang11111995@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang007",
+      "RePassword": "haidang007"
+    },
+    {
+      "id": "1fec",
+      "FirstName": "dang",
+      "LastName": "dang",
+      "Email": "haidang@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang007"
+    },
+    {
+      "id": "caaa",
+      "FirstName": "dang",
+      "LastName": "nguyen ",
+      "Email": "haidang11@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang"
+    },
+    {
+      "id": "02ef",
+      "FirstName": "dang",
+      "LastName": "nguyen",
+      "Email": "haidang@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang"
+    },
+    {
+      "id": "cc8c",
+      "FirstName": "hhhh",
+      "LastName": "aaaaaa",
+      "Email": "haidang34821@gmail.com",
+      "PhoneNumber": "0908799042",
+      "Password": "haidang007"
+    }
+  ]
 }

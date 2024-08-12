@@ -1,6 +1,18 @@
 <template>
   <v-card class="mx-auto" variant="text">
-    <v-form @submit.prevent="store.SignUp(Email, Password)">
+    <v-form
+      @submit.prevent="
+        store.SignUp(
+          FirstName,
+          LastName,
+          Email,
+          PhoneNumber,
+          Password,
+          RePassword
+        ),
+          store.OpenSuccess()
+      "
+    >
       <v-card-title><h1>SignUp</h1></v-card-title>
       <v-card-subtitle
         >Let’s get you all st up so you can access your personal
@@ -16,7 +28,7 @@
               label="First Name"
               variant="outlined"
               placeholder=""
-              :rules="[rules.required, rules.email]"
+              :rules="FirstNameRules"
             ></v-text-field>
             <v-text-field
               class="mt-2"
@@ -36,7 +48,7 @@
               color="primary"
               label="First Name"
               variant="outlined"
-              :rules="[rules.required, rules.email]"
+              :rules="LastNameRules"
             ></v-text-field>
             <v-text-field
               class="mt-2"
@@ -45,7 +57,7 @@
               color="primary"
               label="Phone Number"
               variant="outlined"
-              :rules="[rules.required, rules.email]"
+              :rules="PhoneRules"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -61,6 +73,7 @@
           filled
           :append-inner-icon="showhide ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append-inner="showeye"
+          :rules="PasswordRules"
         ></v-text-field>
         <v-text-field
           class="mt-2"
@@ -73,6 +86,7 @@
           filled
           :append-inner-icon="showhide ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append-inner="showeye"
+          :rules="ConfirmPasswordRules"
         ></v-text-field>
 
         <v-checkbox
@@ -97,7 +111,7 @@
 
       <div class="d-flex justify-center p-2 signup">
         <p>Already have an account?</p>
-        <router-link to="/SignUp">
+        <router-link to="/">
           <p class="red-text ps-2">Login</p>
         </router-link>
       </div>
@@ -168,8 +182,8 @@
 .space {
   margin-top: 40px;
 }
-.text-gray{
-  color:313131
+.text-gray {
+  color: 313131;
 }
 </style>
 <script setup>
@@ -178,30 +192,51 @@ import { useAppStore } from "@/stores/app";
 <script>
 const store = useAppStore();
 export default {
-  data: () => ({
-    FirstName:"",
-    LastName:"",
-    PhoneNumber:"",
-    Email: "",
-    Password: "",
-    RePassword:"",
-    terms: null,
-    msg2: "Don't have an account?",
-    msg3: " Sign up",
+  data: function () {
+    return {
+      FirstName: "",
+      LastName: "",
+      PhoneNumber: "",
+      Email: "",
+      Password: null,
+      RePassword: null,
+      terms: null,
 
-    rules: {
-      required: (value) => !!value || "Không được bỏ trống",
-      email: (value) => {
-        const pattern =
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "E-mail không đúng.";
+      rules: {
+        required: (value) => !!value || "Không được bỏ trống",
+        email: (value) => {
+          const pattern =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value) || "E-mail không đúng.";
+        },
       },
-    },
-    showhide: false,
-  }),
+      FirstNameRules: [(v) => !!v || "Fill to First Name"],
+      LastNameRules: [(v) => !!v || "Fill to Last Name"],
+      PhoneRules: [(v) => !!v || "Fill to Phone Number"],
+      PasswordRules: [
+        (v) => !!v || "Fill to password",
+        (v) => (v && v.length >= 6) || "Minimun 6 characters",
+      ],
+      ConfirmPasswordRules: [
+        (v) => !!v || "Fill to confirm password",
+        (v) => v === this.Password || "Passwords do not match",
+      ],
+      showhide: false,
+    };
+  },
   computed: {
     isFormValid() {
-      return this.Email && this.Password;
+      if (this.terms == true) {
+        return (
+          this.Email &&
+          this.Password &&
+          this.FirstName &&
+          this.LastName &&
+          this.PhoneNumber &&
+          this.RePassword
+        );
+      } else {
+      }
     },
   },
   methods: {

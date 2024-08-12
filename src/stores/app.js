@@ -6,7 +6,9 @@ export const useAppStore = defineStore('app', {
   state: () => ({
     Url:"http://localhost:3000",
     check:null,
-    checkEmail:null
+    checkEmail:null,
+    StatusSuccess:"",
+    DirectSuccess:""
   }),
   getters:{
 
@@ -19,13 +21,37 @@ export const useAppStore = defineStore('app', {
         const login = CheckLogin[0]
 
         if (Password == login.password){
+          this.StatusSuccess = "Login Success"
           this.check = true
+          this.DirectSuccess = "/Home"
         }else{
           this.check = false
         }
       } catch (error) {
         this.check = false
       }
+    },
+
+    SignUp(FirstName, LastName, Email, PhoneNumber, Password){
+      axios.post(`${this.Url}/user`, {
+        FirstName,
+        LastName,
+        Email,
+        PhoneNumber,
+        Password
+      })
+      .then(function (response) {
+        console.log(response);
+        this.check = true
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    OpenSuccess (){
+      this.check = true,
+      this.StatusSuccess = "Create account success"
+      this.DirectSuccess = "/"
     },
 
     ClosedSuccess (){

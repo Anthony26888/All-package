@@ -1,24 +1,24 @@
 <template lang="">
   <v-dialog v-model="store.check" width="auto" persistent>
-    <v-card max-width="400">
-      <v-card-title class="mx-auto">
-        <v-icon class="icon-success" icon="mdi-check-circle-outline" size="x-large" color="success"></v-icon>
-      </v-card-title>
-      <v-card-text>
-        <h3>Login Success</h3>
-      </v-card-text>
+    <v-fade-transition hide-on-leave>
+      <v-card class="mx-auto" elevation="16" width="400">
+        <div class="py-12 text-center">
+          <v-icon
+            class="mb-6"
+            color="success"
+            icon="mdi-check-circle-outline"
+            size="128"
+          ></v-icon>
 
-      <template v-slot:actions>
-        <v-btn
-          class="ms-auto"
-          text="OK"
-          to="/Home"
-          color="success"
-          @click="store.ClosedSuccess"
-          block
-        ></v-btn>
-      </template>
-    </v-card>
+          <div class="text-h4 font-weight-bold">{{ store.StatusSuccess }}</div>
+        </div>
+        <v-card-actions>
+          <v-btn color="success" variant="tonal" :to="store.DirectSuccess" block @click="store.check = false">
+            Confirm
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-fade-transition>
   </v-dialog>
 </template>
 <script setup>
@@ -35,7 +35,7 @@ export default {
 };
 </script>
 <style scoped>
-  .icon-success{
-    width:20px,
-  }
+.icon-success {
+  width: 20px;
+}
 </style>
