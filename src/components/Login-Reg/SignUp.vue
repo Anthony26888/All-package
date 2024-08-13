@@ -13,8 +13,8 @@
           store.OpenSuccess()
       "
     >
-      <v-card-title><h1>SignUp</h1></v-card-title>
-      <v-card-subtitle
+      <v-card-title><h2>SignUp</h2></v-card-title>
+      <v-card-subtitle class="word-wrap"
         >Let’s get you all st up so you can access your personal
         account.</v-card-subtitle
       >
@@ -101,7 +101,6 @@
           :loading="loading"
           :disabled="!isFormValid"
           color="blue"
-          size="large"
           type="submit"
           variant="elevated"
           block
@@ -184,6 +183,9 @@
 }
 .text-gray {
   color: 313131;
+}
+.word-wrap {
+  word-wrap:break-word
 }
 </style>
 <script setup>

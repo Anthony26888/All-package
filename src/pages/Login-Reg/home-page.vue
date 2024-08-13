@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import Login from "../components/Login-Reg/Login.vue";
+import Login from "../../components/Login-Reg/Login.vue";
 </script>

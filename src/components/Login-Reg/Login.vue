@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" variant="text">
     <v-form @submit.prevent="store.Login(Email, Password)">
-      <v-card-title><h1>Login</h1></v-card-title>
+      <v-card-title><h2>Login</h2></v-card-title>
       <v-card-subtitle>Login to access your travelwise account</v-card-subtitle>
       <v-container>
         <v-text-field
@@ -36,20 +36,11 @@
             ></v-checkbox>
           </v-col>
           <v-col>
-            <router-link to="/Home">
+            <router-link to="/ForgotPassword">
               <p class="float-end ma-2 mt-4 red-text">Forgot password</p>
             </router-link>
           </v-col>
         </v-row>
-        <div v-if="store.check == true"></div>
-        <div v-else-if="store.check == null"></div>
-        <v-card
-          v-else
-          title="Warning:"
-          text="Email or Password not correct."
-          variant="tonal"
-          color="red"
-        ></v-card>
       </v-container>
 
       <v-card-actions>
@@ -57,7 +48,6 @@
           :loading="loading"
           :disabled="!isFormValid"
           color="blue"
-          size="large"
           type="submit"
           variant="elevated"
           block
@@ -153,11 +143,11 @@ export default {
     msg3: " Sign up",
 
     rules: {
-      required: (value) => !!value || "Không được bỏ trống",
+      required: (value) => !!value || "Email required",
       email: (value) => {
         const pattern =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "E-mail không đúng.";
+        return pattern.test(value) || "E-mail not correct.";
       },
     },
     showhide: false,

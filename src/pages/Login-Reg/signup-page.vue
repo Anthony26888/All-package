@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-import SignUp from "../components/Login-Reg/SignUp.vue";
-import Dialog from "../components/Login-Reg/DialogSuccess.vue"
+import SignUp from "../../components/Login-Reg/SignUp.vue";
+import Dialog from "../../components/Login-Reg/DialogSuccess.vue"
 </script>
 <style scoped>
 .picture{
