@@ -1,64 +1,154 @@
 {
   "user": [
     {
-      "id": "0",
-      "email": "haidang34821@gmail.com",
-      "password": "haidang007"
-    },
-    {
-      "id": "1",
-      "email": "haidang11111995@gmail.com",
-      "password": "Haidang007@"
-    },
-    {
       "id": "48bc",
-      "FirstName": "dang",
-      "LastName": "nguyen",
+      "FullName": "Nguyễn Hải Đăng",
       "Email": "haidang34821@gmail.com",
       "PhoneNumber": "0908799042",
-      "Password": "haidang007",
-      "RePassword": "haidang007"
+      "Password": "haidang"
     },
     {
       "id": "aefc",
-      "FirstName": "ha",
-      "LastName": "phan",
+      "FullName": "Nguyễn Nhật Đăng",
       "Email": "haidang11111995@gmail.com",
       "PhoneNumber": "0908799042",
-      "Password": "haidang007",
-      "RePassword": "haidang007"
-    },
-    {
-      "id": "1fec",
-      "FirstName": "dang",
-      "LastName": "dang",
-      "Email": "haidang@gmail.com",
-      "PhoneNumber": "0908799042",
       "Password": "haidang007"
-    },
+    }
+  ],
+  "client": [
     {
-      "id": "caaa",
-      "FirstName": "dang",
-      "LastName": "nguyen ",
-      "Email": "haidang11@gmail.com",
-      "PhoneNumber": "0908799042",
-      "Password": "haidang"
-    },
-    {
-      "id": "02ef",
-      "FirstName": "dang",
-      "LastName": "nguyen",
-      "Email": "haidang@gmail.com",
-      "PhoneNumber": "0908799042",
-      "Password": "haidang"
-    },
-    {
-      "id": "cc8c",
-      "FirstName": "hhhh",
-      "LastName": "aaaaaa",
+      "Company": "Công ty thương mại và dịch vụ V.M.S",
+      "Address": "3D4 Thạnh Lộc",
+      "Manager": "Trần Đình Long",
+      "Contact": "0908799042",
       "Email": "haidang34821@gmail.com",
-      "PhoneNumber": "0908799042",
-      "Password": "haidang007"
+      "Tax": "0123456",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "Company": "Công ty dầu thực vật Tân Bình",
+      "Address": "889 Trường Chinh, Phường Tây Thạnh, Quận Tân Phú, HCM",
+      "Contact": "0908799042",
+      "Manager": "Nguyễn Hải Đăng",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "3",
+      "Company": "Công ty dầu thực vật TVN",
+      "Address": "889 Hà Huy Giáp, Phường Thạnh Lộc, Quận 12, HCM",
+      "Contact": "0908799042",
+      "Manager": "Nguyễn Hữu Thịnh",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "e2c0",
+      "Company": "Công ty Hùng Huỳnh",
+      "Address": "818 Trường Chinh",
+      "Manager": "Mr Hùng",
+      "Contact": "90777552",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "abce",
+      "Company": "Công ty Bao Bì Tân Tiến",
+      "Address": "123 KCN Tân Bình",
+      "Manager": "Mr Tiến",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "85b6",
+      "Company": "Công ty Tân Quang Minh",
+      "Address": "Phan Van Hon",
+      "Manager": "Mr Minh",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "b7ca",
+      "Company": "Công Ty Vifon",
+      "Address": "800 Trường Chinh",
+      "Manager": "Mr Quốc",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "d26e",
+      "Company": "Công Ty Chill",
+      "Address": "23 Phan Văn Hớn",
+      "Manager": "Mrs. Linh",
+      "Contact": "90777552",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "d936",
+      "Company": "Công ty Cholimex",
+      "Address": "KCN Vĩnh Lộc",
+      "Manager": "Mr Dương",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "e082",
+      "Company": "Công ty FPT",
+      "Address": "KCN Tân Bình",
+      "Manager": "Mr.Linh",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "0376",
+      "Company": "Công ty Vạn Năng",
+      "Address": "818",
+      "Manager": "Mr Diễm",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "829e",
+      "Company": "Công ty Kubet",
+      "Address": "34 Lam Sơn",
+      "Manager": "Mr Ku",
+      "Contact": "0908799042",
+      "Email": "",
+      "Tax": ""
+    }
+  ],
+  "device": [
+    {
+      "IDCompany": "1",
+      "Device": "Máy 7900",
+      "SeriDevice": "PNT889",
+      "Printhead": "Ultima Plus",
+      "SeriPrinthead": "RNM000",
+      "Fuel": "1039/1505",
+      "Code": "Băng tải 1m5",
+      "Date": "2 lines",
+      "Accessory": "2024-09-06",
+      "id": "b76f"
+    },
+    {
+      "id": "dee5",
+      "IDCompany": "2",
+      "Device": "Máy 8900",
+      "SeriDevice": "IIH34",
+      "Printhead": "Ultima Plus",
+      "SeriPrinthead": "TY678",
+      "Fuel": "1014/1505",
+      "Code": "2 lines",
+      "Date": "2024-09-06",
+      "Accessory": "Sensor omron"
     }
   ]
 }

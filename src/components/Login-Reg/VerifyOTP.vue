@@ -1,6 +1,6 @@
 <template lang="">
   <v-card class="mx-auto" variant="text">
-    <v-form @submit.prevent="store.ForgotPassword(Email), store.OpenSuccess()">
+    <v-form @submit.prevent="">
       <v-card-text>
         <router-link to="/">
           <v-icon icon="mdi-arrow-left-bottom"></v-icon>
@@ -17,24 +17,22 @@
             v-model="otp"
             :loading="loading"
             length="6"
-            variant="underlined"
+            variant="solo-filled"
           ></v-otp-input>
         </div>
         <v-card-actions>
           <v-btn
             :disabled="otp.length < 6 || loading"
-            class="my-5"
             color="primary"
-            text="Submit"
             @click="onClick"
             block
-          ></v-btn>
+            >Submit</v-btn
+          >
         </v-card-actions>
+
         <div class="d-flex text-start mt-2 p-2">
           <p>Didn’t receive a code?</p>
-          <router-link to="/SignUp">
-            <p class="text-red ps-2">Resend</p>
-          </router-link>
+          <p class="text-red ps-2" @click="store.sendEmail(Email)">Resend</p>
         </div>
       </v-container>
     </v-form>
@@ -47,23 +45,39 @@
 }
 .text-red {
   color: red;
+  cursor: pointer;
 }
 </style>
+<script setup>
+import { useAppStore } from "@/stores/app";
+import router from "@/router/index";
+</script>
 <script>
+const store = useAppStore();
 export default {
   data() {
     return {
       loading: false,
       otp: "",
+      VerifyCode: localStorage.getItem("Code"),
+      Email: localStorage.getItem("Email"),
     };
   },
+  computed: {},
   methods: {
     onClick() {
       this.loading = true;
 
       setTimeout(() => {
         this.loading = false;
-      }, 2000);
+        if (this.VerifyCode == this.otp) {
+          router.push("/ChangePassword");
+        } else {
+          store.check = true;
+          store.StatusSuccess = "Verify code not match";
+          store.IconSuccess = false;
+        }
+      }, 1000);
     },
   },
 };

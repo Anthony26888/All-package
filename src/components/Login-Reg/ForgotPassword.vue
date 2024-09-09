@@ -1,13 +1,6 @@
 <template lang="">
   <v-card class="mx-auto" variant="text">
-    <v-form
-      @submit.prevent="
-        store.ForgotPassword(
-          Email,
-        ),
-          store.OpenSuccess()
-      "
-    >
+    <v-form >
       <v-card-text>
         <router-link to="/">
           <v-icon icon="mdi-arrow-left-bottom"></v-icon>
@@ -16,8 +9,7 @@
       </v-card-text>
       <v-card-title><h2>Forgot your password?</h2></v-card-title>
       <v-card-subtitle class="word-wrap"
-        >Enter your email below to recover
-        your password.</v-card-subtitle
+        >Enter your email below to recover your password.</v-card-subtitle
       >
       <v-container>
         <v-text-field
@@ -38,6 +30,7 @@
             type="submit"
             variant="elevated"
             block
+            @click.prevent="store.sendEmail(Email),ClearCode()"
             >Submit
           </v-btn>
         </v-card-actions>
@@ -105,13 +98,18 @@
   display: block;
 }
 </style>
+<script setup>
+import { useAppStore } from "@/stores/app";
+
+</script>
 <script>
+const store = useAppStore();
 export default {
   data() {
     return {
       Email: "",
       rules: {
-        required: (value) => !!value || "Email required",
+        required: (value) => !!value || "Please input email",
         email: (value) => {
           const pattern =
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -124,6 +122,11 @@ export default {
     isFormValid() {
       return this.Email;
     },
+  },
+  methods: {
+    ClearCode(){
+      setTimeout(localStorage.clear(),10000)
+    }
   },
 };
 </script>

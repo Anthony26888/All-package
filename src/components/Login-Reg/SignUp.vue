@@ -3,8 +3,7 @@
     <v-form
       @submit.prevent="
         store.SignUp(
-          FirstName,
-          LastName,
+          FullName,
           Email,
           PhoneNumber,
           Password,
@@ -19,49 +18,33 @@
         account.</v-card-subtitle
       >
       <v-container>
-        <v-row>
-          <v-col>
-            <v-text-field
-              v-model="FirstName"
-              type="text"
-              color="primary"
-              label="First Name"
-              variant="outlined"
-              placeholder=""
-              :rules="FirstNameRules"
-            ></v-text-field>
-            <v-text-field
-              class="mt-2"
-              v-model="Email"
-              type="email"
-              color="primary"
-              label="Email"
-              variant="outlined"
-              placeholder="john.doe@gmail.com"
-              :rules="[rules.required, rules.email]"
-            ></v-text-field>
-          </v-col>
-          <v-col>
-            <v-text-field
-              v-model="LastName"
-              type="text"
-              color="primary"
-              label="First Name"
-              variant="outlined"
-              :rules="LastNameRules"
-            ></v-text-field>
-            <v-text-field
-              class="mt-2"
-              v-model="PhoneNumber"
-              type="number"
-              color="primary"
-              label="Phone Number"
-              variant="outlined"
-              :rules="PhoneRules"
-            ></v-text-field>
-          </v-col>
-        </v-row>
-
+        <v-text-field
+          v-model="FullName"
+          type="text"
+          color="primary"
+          label="Full Name"
+          variant="outlined"
+          :rules="FullName"
+        ></v-text-field>
+        <v-text-field
+          class="mt-2"
+          v-model="Email"
+          type="email"
+          color="primary"
+          label="Email"
+          variant="outlined"
+          placeholder="john.doe@gmail.com"
+          :rules="[rules.required, rules.email]"
+        ></v-text-field>
+        <v-text-field
+          class="mt-2"
+          v-model="PhoneNumber"
+          type="number"
+          color="primary"
+          label="Phone Number"
+          variant="outlined"
+          :rules="PhoneRules"
+        ></v-text-field>
         <v-text-field
           class="mt-2"
           v-model="Password"
@@ -185,7 +168,7 @@
   color: 313131;
 }
 .word-wrap {
-  word-wrap:break-word
+  word-wrap: break-word;
 }
 </style>
 <script setup>
@@ -196,8 +179,7 @@ const store = useAppStore();
 export default {
   data: function () {
     return {
-      FirstName: "",
-      LastName: "",
+      FullName:"",
       PhoneNumber: "",
       Email: "",
       Password: null,
@@ -205,23 +187,22 @@ export default {
       terms: null,
 
       rules: {
-        required: (value) => !!value || "Không được bỏ trống",
+        required: (value) => !!value || "Please input Your Email",
         email: (value) => {
           const pattern =
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return pattern.test(value) || "E-mail không đúng.";
+          return pattern.test(value) || "Please input a valid email.";
         },
       },
-      FirstNameRules: [(v) => !!v || "Fill to First Name"],
-      LastNameRules: [(v) => !!v || "Fill to Last Name"],
-      PhoneRules: [(v) => !!v || "Fill to Phone Number"],
+      FullName: [(v) => !!v || "Please input First Name"],
+      PhoneRules: [(v) => !!v || "Please input Phone Number"],
       PasswordRules: [
-        (v) => !!v || "Fill to password",
+        (v) => !!v || "Please input password",
         (v) => (v && v.length >= 6) || "Minimun 6 characters",
       ],
       ConfirmPasswordRules: [
-        (v) => !!v || "Fill to confirm password",
-        (v) => v === this.Password || "Passwords do not match",
+        (v) => !!v || "Please input confirm password",
+        (v) => v === this.Password || "Confirm Password do not match",
       ],
       showhide: false,
     };

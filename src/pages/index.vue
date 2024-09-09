@@ -1,24 +1,8 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <Login/>
-      </v-col>
-      <v-col>
-        <v-img src="/src/assets/Login-Reg/Login.png" class="picture"></v-img>
-      </v-col>
-    </v-row>
-    <Dialog/>
-
-  </v-container>
+<Home/>
 </template>
 
 <script setup>
-import Login from "../components/Login-Reg/Login.vue";
-import Dialog from "../components/Login-Reg/DialogSuccess.vue"
+import Home from "@/components/Home.vue"
 </script>
-<style scoped>
-.picture{
-  height: 816;
-}
-</style>
+

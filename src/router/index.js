@@ -8,7 +8,7 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Login',
+        name: 'Home',
         component: () => import(/* webpackChunkName: "home" */ '@/pages/index.vue'),
       },
       {
@@ -32,9 +32,19 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/pages/Login-Reg/changepassword-page.vue'),
       },
       {
-        path: '/Home',
-        name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '@/pages/Login-Reg/home-page.vue'),
+        path: '/Login',
+        name: 'Login',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Login-Reg/login-page.vue'),
+      },
+      {
+        path: '/Client',
+        name: 'Client',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Client.vue'),
+      },
+      {
+        path: '/Detail-Client',
+        name: 'Detail-Client',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Detail-Client-page.vue'),
       }
     ],
   },

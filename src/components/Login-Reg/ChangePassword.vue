@@ -1,6 +1,6 @@
 <template lang="">
   <v-card class="mx-auto" variant="text">
-    <v-form @submit.prevent="store.ForgotPassword(Email), store.OpenSuccess()">
+    <v-form @submit.prevent="store.ChangePassword(NewPassword)">
       <v-card-text>
         <router-link to="/">
           <v-icon icon="mdi-arrow-left-bottom"></v-icon>
@@ -15,18 +15,24 @@
         <v-text-field
           class="mt-4"
           v-model="NewPassword"
-          type="password"
           color="primary"
-          label="Create Password"
+          label="New Password"
           variant="outlined"
+          :type="showhide ? 'type' : 'password'"
+          :append-inner-icon="showhide ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append-inner="showeye"
+          :rules="PasswordRules"
         ></v-text-field>
         <v-text-field
           class="mt-4"
           v-model="ReNewPassword"
-          type="password"
           color="primary"
           label="Re-enter Password"
           variant="outlined"
+          :type="showhide ? 'type' : 'password'"
+          :append-inner-icon="showhide ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append-inner="showeye"
+          :rules="ConfirmPasswordRules"
         ></v-text-field>
         <v-card-actions>
           <v-btn
@@ -49,24 +55,35 @@
   display: block;
 }
 </style>
+<script setup>
+import { useAppStore } from "@/stores/app";
+const store = useAppStore();
+</script>
 <script>
 export default {
   data() {
     return {
-      Email: "",
-      rules: {
-        required: (value) => !!value || "Email required",
-        email: (value) => {
-          const pattern =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return pattern.test(value) || "E-mail not correct.";
-        },
-      },
+      NewPassword:"",
+      ReNewPassword:"",
+      PasswordRules: [
+        (v) => !!v || "Please input password",
+        (v) => (v && v.length >= 6) || "Minimun 6 characters",
+      ],
+      ConfirmPasswordRules: [
+        (v) => !!v || "Please input confirm password",
+        (v) => v === this.NewPassword || "Confirm Password do not match",
+      ],
+      showhide: false,
     };
   },
   computed: {
     isFormValid() {
-      return this.Email;
+      return this.NewPassword && this.ReNewPassword;
+    },
+  },
+  methods: {
+    showeye() {
+      this.showhide = !this.showhide;
     },
   },
 };
