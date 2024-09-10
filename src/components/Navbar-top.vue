@@ -1,5 +1,5 @@
 <template lang="">
-  <v-app-bar :elevation="1" color="#F8F8FB">
+  <v-app-bar :elevation="1" class="bg-primary" data-bs-theme="dark">
     <template v-slot:prepend>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
@@ -9,12 +9,13 @@
     </v-app-bar-title>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer" temporary permanent color="#F8F8FB">
-    <v-list density="compact" nav class="mt-5">
+    <v-list density="compact" nav class="mt-2">
       <v-list-item
         v-for="(item, i) in nav"
         :key="i"
         :value="item"
         color="primary"
+        :to="item.key"
       >
         <template v-slot:prepend>
           <v-icon :icon="item.icon"></v-icon>
@@ -31,6 +32,7 @@
             :key="i"
             :value="items"
             color="primary"
+            :to="items.key"
           >
             <template v-slot:prepend>
               <v-icon :icon="items.icon"></v-icon>
@@ -71,17 +73,17 @@ export default {
   data() {
     return {
       Info: false,
-      drawer: false,
+      drawer: true,
       nav: [
-        { text: "Dashboard", icon: "mdi-view-dashboard" },
-        { text: "Client", icon: "mdi-home-group" },
-        { text: "Task", icon: "mdi-checkbox-marked-circle-auto-outline" },
-        { text: "Member", icon: "mdi-account-group" },
+        { text: "Dashboard", icon: "mdi-view-dashboard", key:"" },
+        { text: "Client", icon: "mdi-home-group", key:"/Client" },
+        { text: "Task", icon: "mdi-checkbox-marked-circle-auto-outline", key:"/Task" },
+        { text: "Member", icon: "mdi-account-group", key:"" },
       ],
       footer: [
-        { text: "Setting", icon: "mdi-cogs" },
-        { text: "Infomation", icon: "mdi-information" },
-        { text: "Logout", icon: "mdi-logout" },
+        { text: "Setting", icon: "mdi-cogs", key:"" },
+        { text: "Infomation", icon: "mdi-information", key:"" },
+        { text: "Logout", icon: "mdi-logout", key:"" },
       ],
     };
   },

@@ -1,12 +1,11 @@
 <template lang="">
   <v-card class="mt-3">
-    <v-toolbar>
+    <v-toolbar class="bg-primary">
       <v-toolbar-title>List Client</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <v-btn
-          color="primary"
           prepend-icon="mdi-plus"
           class="text-none text-subtitle-1"
           size="small"
@@ -22,7 +21,7 @@
     >
       <template v-slot:header>
         <v-text-field
-          class="p-5"
+          class="p-2"
           v-model="Search"
           density="comfortable"
           placeholder="Search"

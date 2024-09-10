@@ -17,7 +17,7 @@
       "
     >
       <v-card>
-        <v-toolbar>
+        <v-toolbar class="bg-primary">
           <v-toolbar-title>Edit Device</v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -107,7 +107,7 @@ import { useAppStore } from "@/stores/app";
 </script>
 <script>
 const store = useAppStore();
-store.FetchDeviceClient();
+
 export default {
   data() {
     return {

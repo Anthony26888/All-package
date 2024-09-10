@@ -1,10 +1,10 @@
 <template lang="">
   <v-dialog v-model="store.AddClientDialog" max-width="400">
     <form
-      v-on:submit.prevent="store.AddClients(Company, Address, Manager, Phone, Email, Tax)"
+      v-on:submit.prevent="store.AddClients(Company, Address, Manager, Phone, Email, Tax); store.AddClientDialog = false"
     >
       <v-card>
-        <v-toolbar>
+        <v-toolbar class="bg-primary">
           <v-toolbar-title>Add Client</v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -53,7 +53,6 @@
           ></v-text-field>
           <v-text-field
             v-model="Tax"
-            type="email"
             variant="outlined"
             label="Tax code"
           ></v-text-field>

@@ -10,11 +10,10 @@
           store.DetailClient.Email,
           store.DetailClient.Tax,
         );
-        store.FetchDetailClient()
       "
     >
       <v-card>
-        <v-toolbar dense fixed>
+        <v-toolbar class="bg-primary">
           <v-toolbar-title>Edit Infomation</v-toolbar-title>
 
           <v-spacer></v-spacer>

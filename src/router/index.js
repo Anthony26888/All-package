@@ -42,9 +42,14 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Client.vue'),
       },
       {
-        path: '/Detail-Client',
+        path: '/Detail-Client/:id',
         name: 'Detail-Client',
         component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Detail-Client-page.vue'),
+      },
+      {
+        path: '/Task',
+        name: 'Task',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Task-page.vue'),
       }
     ],
   },

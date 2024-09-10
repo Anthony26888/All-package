@@ -3,17 +3,10 @@
     <Nav />
     <v-main>
       <v-app>
-        <v-breadcrumbs>
-          <v-breadcrumbs-item to="/Client">Client</v-breadcrumbs-item>
-          <v-breadcrumbs-divider
-            ><v-icon icon="mdi-chevron-right"></v-icon
-          ></v-breadcrumbs-divider>
-          <v-breadcrumbs-item>Detail Client</v-breadcrumbs-item>
-        </v-breadcrumbs>
         <v-card variant="text">
-          <v-card-title>Detail Client</v-card-title>
+          <v-card-title>Task Manager</v-card-title>
           <v-card-text>
-            <Card />
+            <Total />
             <Body />
           </v-card-text>
         </v-card>
@@ -23,17 +16,18 @@
       <AddDevice />
       <EditClient />
       <EditDevice />
-      <DeleteDevice/>
+      <DeleteDevice />
     </v-main>
   </v-layout>
 </template>
 
 <script setup>
-import DeleteDevice from "@/components/Crm/Clients/Delete-Device.vue"
+import Total from "@/components/Crm/Clients/Card-Total-Task.vue"
+import DeleteDevice from "@/components/Crm/Clients/Delete-Device.vue";
 import EditDevice from "@/components/Crm/Clients/Edit-Device.vue";
 import EditClient from "@/components/Crm/Clients/Edit-Client.vue";
 import AddDevice from "@/components/Crm/Clients/Add-Device.vue";
-import Body from "@/components/Crm/Clients/Detail-Client.vue";
+import Body from "@/components/Crm/Clients/Task.vue";
 import Nav from "@/components/Navbar-top.vue";
 import Footer from "@/components/AppFooter.vue";
 </script>

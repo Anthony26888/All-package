@@ -16,7 +16,7 @@
       "
     >
       <v-card>
-        <v-toolbar>
+        <v-toolbar class="bg-primary">
           <v-toolbar-title>Add Device</v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -85,7 +85,7 @@
           <v-text-field
             v-model="Part"
             variant="outlined"
-            label="Part"
+            label="Accessory"
           ></v-text-field>
           <v-text-field
             variant="outlined"

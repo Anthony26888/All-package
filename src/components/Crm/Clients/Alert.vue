@@ -15,7 +15,7 @@ const store = useAppStore();
 export default {
   data() {
     return {
-      timeout: 2000,
+      timeout: 5000,
       snack:true
     }
   },

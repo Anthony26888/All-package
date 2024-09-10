@@ -17,6 +17,7 @@ export const useAppStore = defineStore("app", {
       SubmitForgot: "",
       Clients: [],
       Devices: [],
+      Tasks:[],
       DetailClient: [],
       DeviceClient: [],
       Logins: [],
@@ -25,15 +26,23 @@ export const useAppStore = defineStore("app", {
       AddDeviceDialog: false,
       EditClientDialog: false,
       EditDeviceDialog: false,
+      DeleteDeviceDialog: false,
       Alert: false,
       TextAlert: "",
       ColorAlert: "",
     };
   },
+
   getters: {
     LoadSession() {
       this.OTP = sessionStorage.getItem("code");
     },
+    LoadDetailClient(){
+      return FetchDetailClient()
+    },
+    LoadClient(){
+      return FetchClient()
+    }
   },
   actions: {
     async FetchClient() {
@@ -43,6 +52,10 @@ export const useAppStore = defineStore("app", {
     async FetchDevice() {
       const res = await fetch(`${this.Url}/device`);
       this.Devices = await res.json();
+    },
+    async FetchTasks() {
+      const res = await fetch(`${this.Url}/task`);
+      this.Tasks = await res.json();
     },
     async FetchDetailClient() {
       const ID = localStorage.getItem("IDClient");
@@ -59,7 +72,7 @@ export const useAppStore = defineStore("app", {
       const DetailClient = await res.json();
       localStorage.setItem("IDClient", id);
       this.IDClient = id;
-      router.push("/Detail-Client");
+      router.push(`/Detail-Client/${DetailClient.Company}`);
     },
 
     async Login(Email, Password) {
@@ -260,7 +273,7 @@ export const useAppStore = defineStore("app", {
       EditManager,
       EditContact,
       EditEmail,
-      EditTax,
+      EditTax
     ) {
       const ID = localStorage.getItem("IDClient");
       axios
@@ -286,14 +299,14 @@ export const useAppStore = defineStore("app", {
           this.Alert = true;
           this.TextAlert = "Edit client failed";
           this.ColorAlert = "red";
-          this.AddDeviceDialog = false;
+          this.EditDeviceDialog = false;
         })
         .then((error) => {
           console.log(error);
           this.Alert = true;
           this.TextAlert = "Edit client successfully";
           this.ColorAlert = "success";
-          this.AddDeviceDialog = false;
+          this.EditDeviceDialog = false;
         });
     },
     async EditDevices(
@@ -306,7 +319,7 @@ export const useAppStore = defineStore("app", {
       SelectCode,
       Accessory,
       ID,
-      IDCompany,
+      IDCompany
     ) {
       axios
         .put(
@@ -321,7 +334,7 @@ export const useAppStore = defineStore("app", {
             Code: SelectCode,
             Date: SelectDate,
             Accessory: Accessory,
-            IDCompany:IDCompany
+            IDCompany: IDCompany,
           },
           {
             headers: {
@@ -343,6 +356,29 @@ export const useAppStore = defineStore("app", {
           this.TextAlert = "Edit device successfully";
           this.ColorAlert = "success";
           this.EditDeviceDialog = false;
+        });
+    },
+    async DeleteDevice(ID) {
+      axios
+        .delete(`${this.Url}/device/${ID}`, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.Alert = true;
+          this.TextAlert = "Delete device failed";
+          this.ColorAlert = "red";
+          this.DeleteDeviceDialog = false;
+        })
+        .then((error) => {
+          console.log(error);
+          this.Alert = true;
+          this.TextAlert = "Delete device successfully";
+          this.ColorAlert = "success";
+          this.DeleteDeviceDialog = false;
         });
     },
   },

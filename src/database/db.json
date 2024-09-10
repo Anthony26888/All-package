@@ -19,7 +19,7 @@
     {
       "Company": "Công ty thương mại và dịch vụ V.M.S",
       "Address": "3D4 Thạnh Lộc",
-      "Manager": "Trần Đình Long",
+      "Manager": "Trần Đình Thịnh",
       "Contact": "0908799042",
       "Email": "haidang34821@gmail.com",
       "Tax": "0123456",
@@ -123,21 +123,18 @@
       "Contact": "0908799042",
       "Email": "",
       "Tax": ""
+    },
+    {
+      "id": "9cc6",
+      "Company": "Công ty bao bì Hải Đăng",
+      "Address": "3/6 Ấp Tiền Lân, Xã Bà Điểm",
+      "Manager": "Mr Đăng",
+      "Contact": "0908799042",
+      "Email": "haidang34821@gmail.com",
+      "Tax": "123456"
     }
   ],
   "device": [
-    {
-      "IDCompany": "1",
-      "Device": "Máy 7900",
-      "SeriDevice": "PNT889",
-      "Printhead": "Ultima Plus",
-      "SeriPrinthead": "RNM000",
-      "Fuel": "1039/1505",
-      "Code": "Băng tải 1m5",
-      "Date": "2 lines",
-      "Accessory": "2024-09-06",
-      "id": "b76f"
-    },
     {
       "id": "dee5",
       "IDCompany": "2",
@@ -149,6 +146,40 @@
       "Code": "2 lines",
       "Date": "2024-09-06",
       "Accessory": "Sensor omron"
+    },
+    {
+      "id": "97ce",
+      "Device": "Máy 5900",
+      "SeriDevice": "YYYNV",
+      "Printhead": "Ultima",
+      "SeriPrinthead": "PO0999",
+      "Fuel": "1014/1505",
+      "Code": "2 lines",
+      "Date": "2024-09-10",
+      "Accessory": "Băng tải 1m5"
+    }
+  ],
+  "task":[
+    {
+      "id":"1",
+      "IDCompany":"1",
+      "IDDevice":"1",
+      "Engineer":"Nguyễn Hải Đăng",
+      "Title":"Khắc phục sự cố",
+      "Content":"Súc rửa và thay lọc",
+      "Date":"2024-09-10",
+      "Note":""
+    },
+    {
+      "id":"2",
+      "Status":"todo",
+      "IDCompany":"2",
+      "IDDevice":"1",
+      "Engineer":"Trần Đình Long",
+      "Title":"Khắc phục sự cố",
+      "Content":"Súc rửa và thay lọc",
+      "Date":"2024-09-10",
+      "Note":""
     }
   ]
 }
