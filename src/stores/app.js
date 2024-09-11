@@ -18,18 +18,25 @@ export const useAppStore = defineStore("app", {
       Clients: [],
       Devices: [],
       Tasks:[],
+      TasksTodo: [],
+      TasksDone: [],
+      TasksProgress:[],
+      Engineer: [],
       DetailClient: [],
       DeviceClient: [],
       Logins: [],
       StatusLogin: true,
       AddClientDialog: false,
       AddDeviceDialog: false,
+      AddTaskDialog: false,
       EditClientDialog: false,
       EditDeviceDialog: false,
       DeleteDeviceDialog: false,
+      DetailTaskDialog:false,
       Alert: false,
       TextAlert: "",
       ColorAlert: "",
+      ListCompany: [],
     };
   },
 
@@ -37,12 +44,12 @@ export const useAppStore = defineStore("app", {
     LoadSession() {
       this.OTP = sessionStorage.getItem("code");
     },
-    LoadDetailClient(){
-      return FetchDetailClient()
+    LoadDetailClient() {
+      return FetchDetailClient();
     },
-    LoadClient(){
-      return FetchClient()
-    }
+    LoadClient() {
+      return FetchClient();
+    },
   },
   actions: {
     async FetchClient() {
@@ -56,6 +63,22 @@ export const useAppStore = defineStore("app", {
     async FetchTasks() {
       const res = await fetch(`${this.Url}/task`);
       this.Tasks = await res.json();
+    },
+    async FetchTasksTodo() {
+      const res = await fetch(`${this.Url}/task?Status=todo`);
+      this.TasksTodo = await res.json();
+    },
+    async FetchTasksProgress() {
+      const res = await fetch(`${this.Url}/task?Status=progress`);
+      this.TasksProgress = await res.json();
+    },
+    async FetchTasksDone() {
+      const res = await fetch(`${this.Url}/task?Status=done`);
+      this.TasksDone = await res.json();
+    },
+    async FetchEngineer() {
+      const res = await fetch(`${this.Url}/engineer`);
+      this.Engineer = await res.json();
     },
     async FetchDetailClient() {
       const ID = localStorage.getItem("IDClient");
@@ -379,6 +402,53 @@ export const useAppStore = defineStore("app", {
           this.TextAlert = "Delete device successfully";
           this.ColorAlert = "success";
           this.DeleteDeviceDialog = false;
+        });
+    },
+    async AddTask(
+      Company,
+      Address,
+      Manager,
+      Contact,
+      Engineer,
+      Date,
+      Title,
+      Note,
+    ) {
+      axios
+        .post(
+          `${this.Url}/task`,
+          {
+            Company: Company,
+            Address: Address,
+            Manager: Manager,
+            Contact: Contact,
+            Engineer: Engineer,
+            Date: Date,
+            Title: Title,
+            Note: Note,
+            Perform: "",
+            Status:"todo"
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.Alert = true;
+          this.TextAlert = "Add new task failed";
+          this.ColorAlert = "red";
+          this.AddTaskDialog = false;
+        })
+        .then((error) => {
+          console.log(error);
+          this.Alert = true;
+          this.TextAlert = "Add new task successfully";
+          this.ColorAlert = "success";
+          this.AddTaskDialog = false;
         });
     },
   },

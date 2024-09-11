@@ -3,21 +3,21 @@
     <v-col>
       <v-card subtitle="To do">
         <v-card-text
-          ><h1>{{ store.Clients.length }}</h1></v-card-text
+          ><h1>{{ store.TasksTodo.length }}</h1></v-card-text
         >
       </v-card>
     </v-col>
     <v-col>
-      <v-card subtitle="Progressing">
+      <v-card subtitle="In progress">
         <v-card-text
-          ><h1>{{ store.Devices.length }}</h1></v-card-text
+          ><h1>{{ store.TasksProgress.length }}</h1></v-card-text
         >
       </v-card>
     </v-col>
     <v-col>
       <v-card subtitle="Done">
         <v-card-text
-          ><h1>{{ store.Devices.length }}</h1></v-card-text
+          ><h1>{{ store.TasksDone.length }}</h1></v-card-text
         >
       </v-card>
     </v-col>
@@ -28,6 +28,9 @@ import { useAppStore } from "@/stores/app";
 </script>
 <script>
 const store = useAppStore();
+store.FetchTasksTodo()
+store.FetchTasksProgress()
+store.FetchTasksDone()
 export default {
   data() {
     return {};

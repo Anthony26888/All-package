@@ -157,29 +157,118 @@
       "Code": "2 lines",
       "Date": "2024-09-10",
       "Accessory": "Băng tải 1m5"
-    }
-  ],
-  "task":[
-    {
-      "id":"1",
-      "IDCompany":"1",
-      "IDDevice":"1",
-      "Engineer":"Nguyễn Hải Đăng",
-      "Title":"Khắc phục sự cố",
-      "Content":"Súc rửa và thay lọc",
-      "Date":"2024-09-10",
-      "Note":""
     },
     {
-      "id":"2",
-      "Status":"todo",
-      "IDCompany":"2",
-      "IDDevice":"1",
-      "Engineer":"Trần Đình Long",
-      "Title":"Khắc phục sự cố",
-      "Content":"Súc rửa và thay lọc",
-      "Date":"2024-09-10",
-      "Note":""
+      "id": "1876",
+      "Device": "Máy 8900",
+      "SeriDevice": "YNH778",
+      "Printhead": "Ultima",
+      "SeriPrinthead": "09098",
+      "Fuel": "1014/1505",
+      "Code": "2 lines",
+      "Date": "2024-09-11",
+      "Accessory": "Băng tải"
+    }
+  ],
+  "task": [
+    {
+      "id": "1",
+      "Status": "todo",
+      "Company": "Công ty thương mại và dịch vụ V.M.S",
+      "Address": "3D4 Thạnh Lộc",
+      "Manager": "Trần Đình Thịnh",
+      "Contact": "0908799042",
+      "Engineer": "Nguyễn Hải Đăng",
+      "Title": "Khắc phục sự cố",
+      "Content": "Súc rửa và thay lọc",
+      "Date": "2024-09-10",
+      "Note": "",
+      "Perform": ""
+    },
+    {
+      "id": "2",
+      "Status": "done",
+      "Company": "Công ty dầu thực vật Tân Bình",
+      "Address": "889 Trường Chinh, Phường Tây Thạnh, Quận Tân Phú, HCM",
+      "Contact": "0908799042",
+      "Engineer": "Trần Đình Long",
+      "Title": "Khắc phục sự cố",
+      "Content": "Súc rửa và thay lọc",
+      "Date": "2024-09-10",
+      "Note": "",
+      "Perform": ""
+    },
+    {
+      "id": "2",
+      "Status": "progress",
+      "Company": "Công ty TVN",
+      "Address": "889 Thạn Xuân",
+      "Contact": "0908799042",
+      "Engineer": "Trần Văn Nam",
+      "Title": "Khắc phục sự cố",
+      "Content": "Súc rửa và thay lọc",
+      "Date": "2024-09-10",
+      "Note": "",
+      "Perform": ""
+    },
+    {
+      "id": "3d9a",
+      "Company": "Công ty thương mại và dịch vụ V.M.S",
+      "Address": "3D4 Thạnh Lộc",
+      "Manager": "Trần Đình Thịnh",
+      "Contact": "0908799042",
+      "Engineer": "Nguyễn Hải Đăng",
+      "Title": "Súc rửa và thay lọc",
+      "Note": "Mang theo máy rung",
+      "Perform": "",
+      "Status": "todo"
+    },
+    {
+      "id": "cd13",
+      "Company": "Công ty Bao Bì Tân Tiến",
+      "Address": "123 KCN Tân Bình",
+      "Manager": "Mr Tiến",
+      "Contact": "0908799042",
+      "Engineer": "Nguyễn Hữu Thịnh",
+      "Title": "Máy bể lọc rò rĩ mực",
+      "Note": "",
+      "Perform": "",
+      "Status": "todo"
+    },
+    {
+      "id": "3051",
+      "Company": "Công ty Tân Quang Minh",
+      "Address": "Phan Van Hon",
+      "Manager": "Mr Minh",
+      "Contact": "0908799042",
+      "Engineer": "Nguyễn Hữu Thịnh",
+      "Title": "Sửa máy",
+      "Note": "",
+      "Perform": "",
+      "Status": "todo"
+    }
+  ],
+  "engineer": [
+    {
+      "id": "1",
+      "Name": "Nguyễn Hải Đăng",
+      "Contact": "0908799042",
+      "Birth": "1995-11-11",
+      "Address": "3/6 Tiền Lân"
+    },
+    {
+      "id": "2",
+      "Name": "Nguyễn Hữu Thịnh",
+      "Contact": "0908990232",
+      "Birth": "1995-08-26",
+      "Address": "45/6 Thạnh Lộc"
+    },
+    {
+      "id": "3",
+      "Name": "Trần Đình Long",
+      "Contact": "09087990933",
+      "Birth": "1995-03-24",
+      "Address": "22/3 Hà Huy Giáp"
     }
   ]
 }

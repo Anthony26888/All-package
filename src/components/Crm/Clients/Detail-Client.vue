@@ -29,7 +29,6 @@
 
       <v-toolbar-items>
         <v-btn
-          color="primary"
           prepend-icon="mdi-plus"
           class="text-none text-subtitle-1"
           size="small"

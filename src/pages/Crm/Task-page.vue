@@ -13,20 +13,17 @@
         <Alert />
       </v-app>
       <Footer />
-      <AddDevice />
-      <EditClient />
-      <EditDevice />
-      <DeleteDevice />
+      <AddTask />
+      <DetailTask/>
+
     </v-main>
   </v-layout>
 </template>
 
 <script setup>
+import DetailTask from "@/components/Crm/Clients/Detail-Task.vue"
 import Total from "@/components/Crm/Clients/Card-Total-Task.vue"
-import DeleteDevice from "@/components/Crm/Clients/Delete-Device.vue";
-import EditDevice from "@/components/Crm/Clients/Edit-Device.vue";
-import EditClient from "@/components/Crm/Clients/Edit-Client.vue";
-import AddDevice from "@/components/Crm/Clients/Add-Device.vue";
+import AddTask from "@/components/Crm/Clients/Add-Task.vue";
 import Body from "@/components/Crm/Clients/Task.vue";
 import Nav from "@/components/Navbar-top.vue";
 import Footer from "@/components/AppFooter.vue";

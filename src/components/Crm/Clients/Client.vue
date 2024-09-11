@@ -10,7 +10,7 @@
           class="text-none text-subtitle-1"
           size="small"
           @click="store.AddClientDialog = true"
-          >Add Client</v-btn
+          >New Client</v-btn
         >
       </v-toolbar-items>
     </v-toolbar>
