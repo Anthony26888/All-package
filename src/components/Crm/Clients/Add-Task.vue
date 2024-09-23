@@ -73,7 +73,7 @@
               <v-autocomplete
                 v-model="SelectEngineer"
                 label="Engineer"
-                :items="store.Engineer"
+                :items="store.EngineerAvailable"
                 item-title="Name"
                 item-value="Name"
                 variant="outlined"
@@ -112,7 +112,7 @@ import { useAppStore } from "@/stores/app";
 <script>
 const store = useAppStore();
 store.FetchClient();
-store.FetchEngineer();
+store.FetchMemberAvailable();
 export default {
   data() {
     return {

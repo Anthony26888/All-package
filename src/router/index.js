@@ -50,6 +50,16 @@ const routes = [
         path: '/Task',
         name: 'Task',
         component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Task-page.vue'),
+      },
+      {
+        path: '/Member',
+        name: 'Member',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Member-page.vue'),
+      },
+      {
+        path: '/Detail-Member/:id',
+        name: 'Detail-Member',
+        component: () => import(/* webpackChunkName: "home" */ '@/pages/Crm/Detail-Member-page.vue'),
       }
     ],
   },

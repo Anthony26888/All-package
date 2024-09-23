@@ -31,16 +31,18 @@
     <v-card-text>
       <v-data-table-server
         :headers="headers"
-        :items="store.Tasks"
+        :items="store.Members"
         :search="search"
         :items-per-page="10"
         loading-text="Loading... Please wait"
         :items-length="0"
         :loading="LoadingTable"
       >
-        <template v-slot:item.Status="{ item }">
-          <v-chip :color="getColor(item.Status)">
-            {{ item.Status }}
+        <template v-slot:item.Available="{ item }">
+          <v-chip
+            :color="item.Available ? 'green' : 'blue'"
+            :text="item.Available ? 'Available' : 'Unvailable'"
+          >
           </v-chip>
         </template>
 
@@ -48,19 +50,11 @@
           <v-btn
             color="primary"
             prepend-icon="mdi-pencil"
-            @click="(store.DetailTaskDialog = true), store.DetailTask(item.id)"
             size="x-small"
             width="70"
+            @click="store.DetailMembers(item.id)"
             >Edit</v-btn
           ><br />
-          <v-btn
-            color="red"
-            prepend-icon="mdi-close-circle"
-            @click.stop="store.DeleteDeviceDialog = true"
-            size="x-small"
-            width="70"
-            >Delete</v-btn
-          >
         </template>
         <template v-slot:footer="{ page, pageCount, prevPage, nextPage }">
           <div class="d-flex align-center justify-center pa-4">
@@ -96,7 +90,7 @@ import { useAppStore } from "@/stores/app";
 </script>
 <script>
 const store = useAppStore();
-store.FetchTasks();
+store.FetchMember();
 export default {
   data() {
     return {
@@ -107,13 +101,14 @@ export default {
       headers: [
         {
           align: "start",
-          key: "Status",
+          key: "Available",
           title: "Status",
         },
-        { key: "Company", title: "Company" },
-        { key: "Title", title: "Project" },
-        { key: "Engineer", title: "Engineer" },
-        { key: "Date", title: "Date" },
+        { key: "Name", title: "Name" },
+        { key: "Sex", title: "Sex" },
+        { key: "Contact", title: "Contact" },
+        { key: "Address", title: "Address" },
+        { key: "Birth", title: "Birth" },
         {
           align: "start",
           text: "Actions",
@@ -129,13 +124,7 @@ export default {
       this.LoadingTable = false;
     }, 4500);
   },
-  methods: {
-    getColor(Color) {
-      if (Color == "To do") return "primary";
-      else if (Color == "Progress") return "warning";
-      else return "success";
-    },
-  },
+  methods: {},
 };
 </script>
 <style scoped>

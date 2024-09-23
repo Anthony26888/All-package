@@ -17,7 +17,7 @@
   ],
   "client": [
     {
-      "Company": "Công ty thương mại và dịch vụ V.M.S",
+      "Company": "Công ty thương mại và dịch vụ V.M.A",
       "Address": "3D4 Thạnh Lộc",
       "Manager": "Trần Đình Thịnh",
       "Contact": "0908799042",
@@ -132,6 +132,33 @@
       "Contact": "0908799042",
       "Email": "haidang34821@gmail.com",
       "Tax": "123456"
+    },
+    {
+      "id": "bdc3",
+      "Company": "Công ty Phương Nam",
+      "Address": "KCN Vĩnh Lộc",
+      "Manager": "Mr Hùng ",
+      "Contact": "0908799042",
+      "Email": "haidang34821@gmail.com",
+      "Tax": "1234556"
+    },
+    {
+      "id": "d6a8",
+      "Company": "Công ty MASTER",
+      "Address": "818 Trường Chinh",
+      "Manager": "hY",
+      "Contact": "90777552",
+      "Email": "",
+      "Tax": ""
+    },
+    {
+      "id": "b263",
+      "Company": "Công ty Nakydaco",
+      "Address": "889 Trường Chinh",
+      "Manager": "Mr Tùng",
+      "Contact": "0908799042",
+      "Email": "haidang34821@gmail.com",
+      "Tax": "123445"
     }
   ],
   "device": [
@@ -173,46 +200,50 @@
   "task": [
     {
       "id": "1",
-      "Status": "todo",
+      "IDTask":"1",
+      "Status": "To do",
       "Company": "Công ty thương mại và dịch vụ V.M.S",
       "Address": "3D4 Thạnh Lộc",
       "Manager": "Trần Đình Thịnh",
       "Contact": "0908799042",
       "Engineer": "Nguyễn Hải Đăng",
       "Title": "Khắc phục sự cố",
-      "Content": "Súc rửa và thay lọc",
       "Date": "2024-09-10",
       "Note": "",
-      "Perform": ""
+      "Perform": "",
+      "ChangeAccessory":null
     },
     {
       "id": "2",
-      "Status": "done",
+      "IDTask":"2",
+      "Status": "Done",
       "Company": "Công ty dầu thực vật Tân Bình",
       "Address": "889 Trường Chinh, Phường Tây Thạnh, Quận Tân Phú, HCM",
       "Contact": "0908799042",
       "Engineer": "Trần Đình Long",
       "Title": "Khắc phục sự cố",
-      "Content": "Súc rửa và thay lọc",
       "Date": "2024-09-10",
       "Note": "",
-      "Perform": ""
+      "Perform": "",
+      "ChangeAccessory":null
     },
     {
       "id": "2",
-      "Status": "progress",
+      "IDTask":"1",
+      "Status": "Progress",
       "Company": "Công ty TVN",
       "Address": "889 Thạn Xuân",
       "Contact": "0908799042",
       "Engineer": "Trần Văn Nam",
       "Title": "Khắc phục sự cố",
-      "Content": "Súc rửa và thay lọc",
       "Date": "2024-09-10",
       "Note": "",
-      "Perform": ""
+      "Perform": "",
+      "ChangeAccessory":null
     },
     {
       "id": "3d9a",
+      "IDTask":"2",
       "Company": "Công ty thương mại và dịch vụ V.M.S",
       "Address": "3D4 Thạnh Lộc",
       "Manager": "Trần Đình Thịnh",
@@ -221,10 +252,12 @@
       "Title": "Súc rửa và thay lọc",
       "Note": "Mang theo máy rung",
       "Perform": "",
-      "Status": "todo"
+      "Status": "To do",
+      "ChangeAccessory":null
     },
     {
       "id": "cd13",
+      "IDTask":"1",
       "Company": "Công ty Bao Bì Tân Tiến",
       "Address": "123 KCN Tân Bình",
       "Manager": "Mr Tiến",
@@ -233,10 +266,12 @@
       "Title": "Máy bể lọc rò rĩ mực",
       "Note": "",
       "Perform": "",
-      "Status": "todo"
+      "Status": "To do",
+      "ChangeAccessory":null
     },
     {
       "id": "3051",
+      "IDTask":"1",
       "Company": "Công ty Tân Quang Minh",
       "Address": "Phan Van Hon",
       "Manager": "Mr Minh",
@@ -245,27 +280,34 @@
       "Title": "Sửa máy",
       "Note": "",
       "Perform": "",
-      "Status": "todo"
+      "Status": "To do",
+      "ChangeAccessory":null
     }
   ],
-  "engineer": [
+  "member": [
     {
       "id": "1",
+      "Available":true,
       "Name": "Nguyễn Hải Đăng",
+      "Sex":"Men",
       "Contact": "0908799042",
       "Birth": "1995-11-11",
       "Address": "3/6 Tiền Lân"
     },
     {
       "id": "2",
+      "Available":true,
       "Name": "Nguyễn Hữu Thịnh",
+      "Sex":"Men",
       "Contact": "0908990232",
       "Birth": "1995-08-26",
       "Address": "45/6 Thạnh Lộc"
     },
     {
       "id": "3",
+      "Available":false,
       "Name": "Trần Đình Long",
+      "Sex":"Women",
       "Contact": "09087990933",
       "Birth": "1995-03-24",
       "Address": "22/3 Hà Huy Giáp"

@@ -21,9 +21,14 @@ export const useAppStore = defineStore("app", {
       TasksTodo: [],
       TasksDone: [],
       TasksProgress:[],
-      Engineer: [],
+      Member:[],
+      MemberAvailable: [],
+      MemberUnavailable: [],
       DetailClient: [],
       DeviceClient: [],
+      DetailTasks:[],
+      DetailMember:[],
+      TaskMember:[],
       Logins: [],
       StatusLogin: true,
       AddClientDialog: false,
@@ -33,6 +38,7 @@ export const useAppStore = defineStore("app", {
       EditDeviceDialog: false,
       DeleteDeviceDialog: false,
       DetailTaskDialog:false,
+      EditTaskDialog:false,
       Alert: false,
       TextAlert: "",
       ColorAlert: "",
@@ -44,51 +50,91 @@ export const useAppStore = defineStore("app", {
     LoadSession() {
       this.OTP = sessionStorage.getItem("code");
     },
-    LoadDetailClient() {
-      return FetchDetailClient();
-    },
-    LoadClient() {
-      return FetchClient();
-    },
+
   },
   actions: {
     async FetchClient() {
-      const res = await fetch(`${this.Url}/client`);
-      this.Clients = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/client`);
+        this.Clients = await res.json();
+      }, 5000);
     },
+
     async FetchDevice() {
-      const res = await fetch(`${this.Url}/device`);
-      this.Devices = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/device`);
+        this.Devices = await res.json();
+      }, 5000);
     },
     async FetchTasks() {
-      const res = await fetch(`${this.Url}/task`);
-      this.Tasks = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/task`);
+        this.Tasks = await res.json();
+      }, 5000);
+
     },
     async FetchTasksTodo() {
-      const res = await fetch(`${this.Url}/task?Status=todo`);
-      this.TasksTodo = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/task?Status=To do`);
+        this.TasksTodo = await res.json();
+      }, 5000);
     },
     async FetchTasksProgress() {
-      const res = await fetch(`${this.Url}/task?Status=progress`);
-      this.TasksProgress = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/task?Status=Progress`);
+        this.TasksProgress = await res.json();
+      }, 5000);
     },
     async FetchTasksDone() {
-      const res = await fetch(`${this.Url}/task?Status=done`);
-      this.TasksDone = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/task?Status=Done`);
+        this.TasksDone = await res.json();
+      }, 5000);
     },
-    async FetchEngineer() {
-      const res = await fetch(`${this.Url}/engineer`);
-      this.Engineer = await res.json();
+    async FetchTaskMember() {
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/task?`);
+        this.TasksDone = await res.json();
+      }, 5000);
+    },
+    async FetchMember() {
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/member`);
+        this.Members = await res.json();
+      }, 5000);
+    },
+    async FetchMemberAvailable() {
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/member?Available=true`);
+        this.MemberAvailable = await res.json();
+      }, 5000);
+    },
+    async FetchMemberUnavailable() {
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/member?Available=false`);
+        this.MemberUnavailable = await res.json();
+      }, 5000);
     },
     async FetchDetailClient() {
       const ID = localStorage.getItem("IDClient");
-      const res = await fetch(`${this.Url}/client/${ID}`);
-      this.DetailClient = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/client/${ID}`);
+        this.DetailClient = await res.json();
+      }, 5000);
     },
     async FetchDeviceClient() {
       const ID = localStorage.getItem("IDClient");
-      const res = await fetch(`${this.Url}/device?IDCompany=${ID}`);
-      this.DeviceClient = await res.json();
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/device?IDCompany=${ID}`);
+        this.DeviceClient = await res.json();
+      }, 5000);
+    },
+    async FetchDetailMember() {
+      const ID = localStorage.getItem("IDMember");
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/member/${ID}`);
+        this.DetailMember = await res.json();
+      }, 5000);
     },
     async DetailList(id) {
       const res = await fetch(`${this.Url}/client/${id}`);
@@ -97,7 +143,24 @@ export const useAppStore = defineStore("app", {
       this.IDClient = id;
       router.push(`/Detail-Client/${DetailClient.Company}`);
     },
-
+    async DetailTask(id) {
+      const res = await fetch(`${this.Url}/task/${id}`);
+      this.DetailTasks = await res.json();
+    },
+    async DetailMembers(id) {
+      const res = await fetch(`${this.Url}/member/${id}`);
+      const DetailMember = await res.json();
+      localStorage.setItem("IDMember", id)
+      localStorage.setItem("IDTask", DetailMember.IDTask)
+      router.push(`/Detail-Member/${DetailMember.Name}`)
+    },
+    async FetchTaskMember() {
+      const ID = localStorage.getItem("IDTask");
+      setInterval(async () => {
+        const res = await fetch(`${this.Url}/device?IDTask=${ID}`);
+        this.TaskMember = await res.json();
+      }, 5000);
+    },
     async Login(Email, Password) {
       try {
         const res = await fetch(`${this.Url}/user?Email=${Email}`);

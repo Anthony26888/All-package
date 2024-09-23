@@ -1,7 +1,10 @@
 <template lang="">
   <v-dialog v-model="store.AddClientDialog" max-width="400">
     <form
-      v-on:submit.prevent="store.AddClients(Company, Address, Manager, Phone, Email, Tax); store.AddClientDialog = false"
+      v-on:submit.prevent="
+        store.AddClients(Company, Address, Manager, Phone, Email, Tax);
+        store.AddClientDialog = false;
+      "
     >
       <v-card>
         <v-toolbar class="bg-primary">
@@ -58,7 +61,14 @@
           ></v-text-field>
         </v-card-text>
         <v-card-actions>
-          <v-btn block color="primary" variant="flat" type="submit">SAVE</v-btn>
+          <v-btn
+            block
+            color="primary"
+            variant="flat"
+            type="submit"
+            :loading="loading"
+            >SAVE</v-btn
+          >
         </v-card-actions>
       </v-card>
     </form>
@@ -72,23 +82,18 @@ const store = useAppStore();
 export default {
   data() {
     return {
+      loading: false,
       dialog: true,
       loading: false,
       Company: "",
       Address: "",
       Manager: "",
       Phone: "",
-      Email:"",
-      Tax:""
+      Email: "",
+      Tax: "",
     };
   },
-  watch: {
-    loading(val) {
-      if (!val) return;
 
-      setTimeout(() => (this.loading = false), 2000);
-    },
-  },
 };
 </script>
 <style lang=""></style>

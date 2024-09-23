@@ -78,7 +78,7 @@ export default {
         { text: "Dashboard", icon: "mdi-view-dashboard", key:"" },
         { text: "Client", icon: "mdi-home-group", key:"/Client" },
         { text: "Task", icon: "mdi-checkbox-marked-circle-auto-outline", key:"/Task" },
-        { text: "Member", icon: "mdi-account-group", key:"" },
+        { text: "Member", icon: "mdi-account-group", key:"/Member" },
       ],
       footer: [
         { text: "Setting", icon: "mdi-cogs", key:"" },

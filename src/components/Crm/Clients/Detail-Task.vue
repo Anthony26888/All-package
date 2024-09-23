@@ -1,104 +1,68 @@
 <template lang="">
-  <v-dialog v-model="store.DetailTaskDialog" max-width="600">
-    <form
-      v-on:submit.prevent="
-        store.AddDevices(
-          SelectDevice,
-          SeriDevice,
-          SelectPrinthead,
-          SeriPrinthead,
-          SelectFuel,
-          SelectDate,
-          SelectCode,
-          Part,
-          store.IDClient
-        )
-      "
-    >
-      <v-card>
-        <v-toolbar class="bg-primary">
-          <v-toolbar-title>Add Device</v-toolbar-title>
+  <v-dialog v-model="store.DetailTaskDialog" max-width="700">
+    <v-card>
+      <v-toolbar class="bg-primary">
+        <v-toolbar-title>Detail Task</v-toolbar-title>
 
-          <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-          <v-toolbar-items>
-            <v-btn
-              icon="mdi-close"
-              @click="store.DetailTaskDialog = false"
-            ></v-btn>
-          </v-toolbar-items>
-        </v-toolbar>
-        <v-card-text>
-          <v-row>
-            <v-col>
-              <v-select
-                v-model="SelectDevice"
-                label="Select device"
-                :items="Device"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-            <v-col>
-              <v-text-field
-                v-model="SeriDevice"
-                variant="outlined"
-                label="Seri Device"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-select
-                v-model="SelectPrinthead"
-                label="Select Printhead"
-                :items="Printhead"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-            <v-col>
-              <v-text-field
-                v-model="SeriPrinthead"
-                variant="outlined"
-                label="Seri Printhead"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col>
-              <v-select
-                v-model="SelectFuel"
-                label="Select Fuel"
-                :items="Fuel"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-            <v-col>
-              <v-select
-                v-model="SelectCode"
-                label="Select code line"
-                :items="Code"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-          </v-row>
-          <v-text-field
-            v-model="Part"
-            variant="outlined"
-            label="Accessory"
-          ></v-text-field>
-          <v-text-field
-            variant="outlined"
-            label="Date"
-            type="date"
-            v-model="SelectDate"
-          ></v-text-field>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn block color="primary" variant="flat" type="submit">SAVE</v-btn>
-        </v-card-actions>
-      </v-card>
-    </form>
+        <v-toolbar-items>
+          <v-btn
+            icon="mdi-close"
+            @click="store.DetailTaskDialog = false"
+          ></v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+      <v-card-title>{{ store.DetailTasks.Title }}</v-card-title>
+      <v-card-subtitle>{{ store.DetailTasks.Date }}</v-card-subtitle>
+      <v-card-text style="height: 350px; overflow-y: scroll">
+        <p class="text-muted text-start">
+          Status:
+          <v-chip :color="getColor(store.DetailTasks.Status)">
+            {{ store.DetailTasks.Status }}
+          </v-chip>
+        </p>
+        <p class="text-muted text-start">
+          Company: <strong>{{ store.DetailTasks.Company }}</strong>
+        </p>
+        <p class="text-muted">
+          Address: <strong>{{ store.DetailTasks.Address }}</strong>
+        </p>
+        <v-row>
+          <v-col>
+            <p class="text-muted">
+              Manager: <strong>{{ store.DetailTasks.Manager }}</strong>
+            </p>
+          </v-col>
+          <v-col>
+            <p class="text-muted">
+              Contact: <strong>{{ store.DetailTasks.Contact }}</strong>
+            </p>
+          </v-col>
+        </v-row>
+        <p class="text-muted">
+          Note: <strong>{{ store.DetailTasks.Note }}</strong>
+        </p>
+        <v-divider></v-divider>
+        <p class="text-muted">
+          Engineer: <strong>{{ store.DetailTasks.Engineer }}</strong>
+        </p>
+        <v-row>
+          <v-col>
+            <p class="text-muted">Device:</p>
+            <br />
+            <strong>{{ store.DetailTasks.Perform }}</strong>
+          </v-col>
+          <v-col>
+            <p class="text-muted">Seri:</p>
+            <br />
+            <strong>{{ store.DetailTasks.Perform }}</strong>
+          </v-col>
+        </v-row>
+        <p class="text-muted">Result:</p>
+        <strong>{{ store.DetailTasks.Perform }}</strong>
+      </v-card-text>
+    </v-card>
   </v-dialog>
 </template>
 <script setup>
@@ -108,20 +72,7 @@ import { useAppStore } from "@/stores/app";
 const store = useAppStore();
 export default {
   data() {
-    return {
-      SelectDevice: "",
-      SeriDevice: "",
-      SelectPrinthead: "",
-      SeriPrinthead: "",
-      SelectFuel: "",
-      SelectDate: "",
-      SelectCode: "",
-      Part: "",
-      Device: ["Máy 4900", "Máy 5900", "Máy 7900", "Máy 8900"],
-      Printhead: ["Ultima", "Ultima Plus", "Mini"],
-      Fuel: ["1014/1505", "1010/1555", "1039/1505", "1079/1505"],
-      Code: ["2 lines", "3 lines", "4 lines", "5 lines"],
-    };
+    return {};
   },
   watch: {
     loading(val) {
@@ -130,7 +81,13 @@ export default {
       setTimeout(() => (this.loading = false), 2000);
     },
   },
-  computed: {},
+  methods: {
+    getColor(Color) {
+      if (Color == "To do") return "primary";
+      else if (Color == "Progress") return "warning";
+      else return "Success";
+    },
+  },
 };
 </script>
 <style lang=""></style>

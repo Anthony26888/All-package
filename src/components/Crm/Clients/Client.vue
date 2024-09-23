@@ -18,6 +18,8 @@
       :items="store.Clients"
       :items-per-page="10"
       :search="Search"
+      :items-length="0"
+      :loading="LoadingList"
     >
       <template v-slot:header>
         <v-text-field
@@ -26,7 +28,7 @@
           density="comfortable"
           placeholder="Search"
           prepend-inner-icon="mdi-magnify"
-          variant="solo"
+          variant="solo-filled"
           clearable
           hide-details
         ></v-text-field>
@@ -39,8 +41,7 @@
             :title="value.raw.Company"
             :subtitle="value.raw.Address"
             class="mx-auto p-2 mb-2 cursor-pointer"
-            @click="
-              store.DetailList(value.raw.id)"
+            @click="store.DetailList(value.raw.id)"
           >
             <template v-slot:append>
               <v-btn
@@ -51,6 +52,18 @@
             </template>
           </v-list-item>
         </v-list>
+      </template>
+      <template v-slot:loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
       </template>
       <template v-slot:footer="{ page, pageCount, prevPage, nextPage }">
         <div class="d-flex align-center justify-center pa-4">
@@ -92,8 +105,15 @@ export default {
     return {
       Search: "",
       page: 1,
+      LoadingList: true,
     };
   },
+  mounted() {
+    setTimeout(() => {
+      this.LoadingList = false;
+    }, 4500);
+  },
+  methods: {},
 };
 </script>
 <style scoped>
